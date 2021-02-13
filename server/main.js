@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { LinksCollection } from "/imports/api/links";
+import { LinksCollection } from "/imports/db/links";
 import "../imports/api/accountsMethods";
 
 function insertLink({ title, url }) {
