@@ -18,43 +18,45 @@ export const App = () => {
     <>
       <Navbar />
       <Switch>
-        <div className="main-content">
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          {user ? (
-            <>
-              <Route exact path="/clients">
-                <Clients />
-              </Route>
-              <Route exact path="/orders">
-                <Orders />
-              </Route>
-              <Route exact path="/items">
-                <Items />
-              </Route>
-              <Route path="/clients/:id">
-                <SingleItem />
-              </Route>
-              <Route path="/orders/:id">
-                <SingleItem />
-              </Route>
-              <Route path="/items/:id">
-                <SingleItem />
-              </Route>
+        <React.Fragment>
+          <div className="main-content">
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            {user ? (
+              <>
+                <Route exact path="/clients">
+                  <Clients />
+                </Route>
+                <Route exact path="/orders">
+                  <Orders />
+                </Route>
+                <Route exact path="/items">
+                  <Items />
+                </Route>
+                <Route path="/clients/:id">
+                  <SingleItem />
+                </Route>
+                <Route path="/orders/:id">
+                  <SingleItem />
+                </Route>
+                <Route path="/items/:id">
+                  <SingleItem />
+                </Route>
+                <Route exact path="/">
+                  <Welcome />
+                </Route>
+              </>
+            ) : (
               <Route exact path="/">
                 <Welcome />
               </Route>
-            </>
-          ) : (
-            <Route exact path="/">
-              <Welcome />
-            </Route>
-          )}
-        </div>
+            )}
+          </div>
+        </React.Fragment>
       </Switch>
       <Footer />
     </>

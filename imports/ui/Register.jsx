@@ -16,10 +16,11 @@ export function Register() {
   };
 
   return (
-    <form onSubmit={submit} className="">
+    <form onSubmit={submit} className="container my-5">
       <label htmlFor="username">Username</label>
 
       <input
+        className="row mb-4"
         type="text"
         placeholder="Username"
         name="username"
@@ -30,6 +31,7 @@ export function Register() {
       <label htmlFor="password">Password</label>
 
       <input
+        className="row mb-4"
         type="password"
         placeholder="Password"
         name="password"
@@ -39,6 +41,7 @@ export function Register() {
       <label htmlFor="password2">Repeat your Password</label>
 
       <input
+        className="row mb-4"
         type="password"
         placeholder="Repeat your password"
         name="password2"
