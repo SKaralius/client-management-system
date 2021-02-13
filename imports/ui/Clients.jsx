@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { ClientsCollection } from "../db/clients";
+import { DisplayList } from "../components/DisplayList";
 
 export function Clients() {
   const [clientName, setClientName] = useState("");
@@ -16,15 +17,7 @@ export function Clients() {
 
   return (
     <div>
-      <ul>
-        {clients.map((client) => {
-          return (
-            <li key={client._id}>
-              {client.name} <button>Edit</button>
-            </li>
-          );
-        })}
-      </ul>
+      <DisplayList list={clients} />
       <label htmlFor="clientName">Client Name</label>
       <input
         type="text"

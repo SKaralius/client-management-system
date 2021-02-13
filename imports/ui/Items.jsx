@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { ItemsCollection } from "../db/items";
+import { DisplayList } from "../components/DisplayList";
 
 export function Items() {
   const [itemName, setitemName] = useState("");
@@ -16,15 +17,7 @@ export function Items() {
 
   return (
     <div>
-      <ul>
-        {items.map((item) => {
-          return (
-            <li key={item._id}>
-              {item.name} <button>Edit</button>
-            </li>
-          );
-        })}
-      </ul>
+      <DisplayList list={items} />
       <label htmlFor="itemName">Item Name</label>
       <input
         type="text"
