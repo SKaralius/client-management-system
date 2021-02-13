@@ -38,7 +38,8 @@ export function SingleItem() {
   }
 
   return (
-    <div>
+    <div className="my-5 container-fluid">
+      <h1 className="my-5">Displaying {item.name}</h1>
       <label htmlFor="name">Name</label>
 
       <input
@@ -46,6 +47,7 @@ export function SingleItem() {
         type="text"
         placeholder={itemName}
         value={itemName}
+        className="mx-auto"
         onChange={(e) => setItemName(e.target.value)}
       />
       <button onClick={submitUpdate}>Update</button>

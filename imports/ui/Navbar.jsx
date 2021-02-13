@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { Logout } from "./Logout";
 import { ListLink } from "../components/ListLink";
 
-export default function Navbar() {
+export function Navbar() {
   const user = useTracker(() => Meteor.user());
   return (
     <nav
@@ -18,7 +18,7 @@ export default function Navbar() {
         </Link>
 
         <div className="collapse navbar-collapse" id="navbarsExample02">
-          <ul className="navbar-nav me-auto">
+          <ul className="navbar-nav me-auto container-sm">
             {user ? (
               <>
                 <ListLink route="/clients" text="Clients" />

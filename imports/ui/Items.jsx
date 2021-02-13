@@ -3,9 +3,14 @@ import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { ItemsCollection } from "../db/items";
 import { DisplayList } from "../components/DisplayList";
+import { AddNew } from "../components/AddNew";
 
 export function Items() {
   const [itemName, setitemName] = useState("");
+
+  function updateName(name) {
+    setitemName(name);
+  }
 
   function additem() {
     Meteor.call("items.insert", itemName);
@@ -19,15 +24,7 @@ export function Items() {
   return (
     <div>
       <DisplayList list={items} />
-      <label htmlFor="itemName">Item Name</label>
-      <input
-        type="text"
-        placeholder="item Name"
-        name="itemName"
-        required
-        onChange={(e) => setitemName(e.target.value)}
-      />
-      <button onClick={() => additem()}>Add new item</button>
+      <AddNew name="Item" onClick={additem} setName={updateName} />
     </div>
   );
 }

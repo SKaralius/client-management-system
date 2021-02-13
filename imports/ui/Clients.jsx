@@ -3,9 +3,14 @@ import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { ClientsCollection } from "../db/clients";
 import { DisplayList } from "../components/DisplayList";
+import { AddNew } from "../components/AddNew";
 
 export function Clients() {
   const [clientName, setClientName] = useState("");
+
+  function updateName(name) {
+    setClientName(name);
+  }
 
   function addClient() {
     Meteor.call("clients.insert", clientName);
@@ -19,15 +24,7 @@ export function Clients() {
   return (
     <div>
       <DisplayList list={clients} />
-      <label htmlFor="clientName">Client Name</label>
-      <input
-        type="text"
-        placeholder="Client Name"
-        name="clientName"
-        required
-        onChange={(e) => setClientName(e.target.value)}
-      />
-      <button onClick={() => addClient()}>Add new Client</button>
+      <AddNew name="Client" onClick={addClient} setName={updateName} />
     </div>
   );
 }

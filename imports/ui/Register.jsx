@@ -9,9 +9,10 @@ export function Register() {
   const submit = (e) => {
     e.preventDefault();
 
-    if (password == passwordRepeat)
+    if (password == passwordRepeat) {
       Meteor.call("accounts.insert", username, password);
-    else alert("Passwords do not match");
+      Meteor.loginWithPassword(username, password);
+    } else alert("Passwords do not match");
   };
 
   return (

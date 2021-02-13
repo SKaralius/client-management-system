@@ -1,11 +1,10 @@
 import React from "react";
-import { Info } from "./Info.jsx";
 
 export function Welcome() {
   return (
-    <div>
-      <h1>Welcome to Meteor!</h1>
-      <Info />
+    <div className="m-5">
+      <h1>Content Management System.</h1>
+      <h2>Register to create Clients, orders and items.</h2>
     </div>
   );
 }
