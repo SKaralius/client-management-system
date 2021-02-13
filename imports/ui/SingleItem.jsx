@@ -20,6 +20,7 @@ export function SingleItem() {
   const { id } = useParams();
   const { db, displayName } = GetDbAndName();
   const item = useTracker(() => {
+    Meteor.subscribe(displayName);
     return db.findOne({
       _id: { $eq: id },
     });

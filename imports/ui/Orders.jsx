@@ -12,6 +12,7 @@ export function Orders() {
   }
 
   const orders = useTracker(() => {
+    Meteor.subscribe("orders");
     return OrdersCollection.find({}).fetch() || [];
   });
 

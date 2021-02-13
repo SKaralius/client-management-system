@@ -1,9 +1,12 @@
 import { Meteor } from "meteor/meteor";
 import { LinksCollection } from "/imports/db/links";
-import "../imports/api/accountsMethods";
-import "../imports/api/clientMethods";
-import "../imports/api/orderMethods";
-import "../imports/api/itemMethods";
+import "../imports/api/methods/accountsMethods";
+import "../imports/api/methods/clientMethods";
+import "../imports/api/methods/orderMethods";
+import "../imports/api/methods/itemMethods";
+import "../imports/api/publications/clientPublications";
+import "../imports/api/publications/orderPublication";
+import "../imports/api/publications/itemPublication";
 
 function insertLink({ title, url }) {
   LinksCollection.insert({ title, url, createdAt: new Date() });

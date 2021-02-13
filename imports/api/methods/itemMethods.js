@@ -1,29 +1,29 @@
 import { check } from "meteor/check";
 import { Meteor } from "meteor/meteor";
-import { OrdersCollection } from "../db/orders";
+import { ItemsCollection } from "../../db/items";
 
 Meteor.methods({
-  "orders.insert"(name) {
+  "items.insert"(name) {
     check(name, String);
 
     if (!this.userId) {
       throw new Meteor.Error("Not authenticated.");
     }
 
-    OrdersCollection.insert({
+    ItemsCollection.insert({
       userId: Meteor.userId(),
       name,
       createdAt: new Date(),
     });
   },
-  "orders.update"(selector, name) {
+  "items.update"(selector, name) {
     check(name, String);
 
     if (!this.userId) {
       throw new Meteor.Error("Not authenticated.");
     }
 
-    OrdersCollection.update(selector, {
+    ItemsCollection.update(selector, {
       userId: Meteor.userId(),
       name,
       createdAt: new Date(),

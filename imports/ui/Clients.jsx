@@ -12,6 +12,7 @@ export function Clients() {
   }
 
   const clients = useTracker(() => {
+    Meteor.subscribe("clients");
     return ClientsCollection.find({}).fetch() || [];
   });
 
