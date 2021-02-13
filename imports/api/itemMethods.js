@@ -16,4 +16,17 @@ Meteor.methods({
       createdAt: new Date(),
     });
   },
+  "items.update"(selector, name) {
+    check(name, String);
+
+    if (!this.userId) {
+      throw new Meteor.Error("Not authenticated.");
+    }
+
+    ItemsCollection.update(selector, {
+      userId: Meteor.userId(),
+      name,
+      createdAt: new Date(),
+    });
+  },
 });
