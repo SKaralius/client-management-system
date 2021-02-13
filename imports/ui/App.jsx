@@ -7,6 +7,8 @@ import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import { Welcome } from "./Welcome";
 import { Clients } from "./Clients";
+import { Orders } from "./Orders";
+import { Items } from "./Items";
 
 export const App = () => {
   const user = useTracker(() => Meteor.user());
@@ -21,9 +23,17 @@ export const App = () => {
           <Register />
         </Route>
         {user ? (
-          <Route path="/clients">
-            <Clients />
-          </Route>
+          <>
+            <Route path="/clients">
+              <Clients />
+            </Route>
+            <Route path="/orders">
+              <Orders />
+            </Route>
+            <Route path="/items">
+              <Items />
+            </Route>
+          </>
         ) : (
           <Welcome />
         )}

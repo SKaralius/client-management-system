@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import { Logout } from "./Logout";
+import { ListLink } from "../components/ListLink";
 
 export default function Navbar() {
   const user = useTracker(() => Meteor.user());
@@ -19,27 +20,16 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarsExample02">
           <ul className="navbar-nav me-auto">
             {user ? (
-              <Logout />
+              <>
+                <ListLink route="/clients" text="Clients" />
+                <ListLink route="/orders" text="Orders" />
+                <ListLink route="/items" text="Items" />
+                <Logout />
+              </>
             ) : (
               <>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/login"
-                  >
-                    Log In
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active"
-                    aria-current="page"
-                    to="/register"
-                  >
-                    Register
-                  </Link>
-                </li>
+                <ListLink route="/login" text="Log In" />
+                <ListLink route="/register" text="Register" />
               </>
             )}
           </ul>

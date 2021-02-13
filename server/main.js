@@ -1,6 +1,9 @@
 import { Meteor } from "meteor/meteor";
 import { LinksCollection } from "/imports/db/links";
 import "../imports/api/accountsMethods";
+import "../imports/api/clientMethods";
+import "../imports/api/orderMethods";
+import "../imports/api/itemMethods";
 
 function insertLink({ title, url }) {
   LinksCollection.insert({ title, url, createdAt: new Date() });
