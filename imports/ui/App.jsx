@@ -1,28 +1,28 @@
 import React from "react";
-import { Hello } from "./Hello.jsx";
-import { Info } from "./Info.jsx";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Login } from "./Login";
 import { Register } from "./Register";
+import { useTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
+import { Welcome } from "./Welcome";
 
-export const App = () => (
-  <>
-    <Navbar />
-    <Switch>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/register">
-        <Register />
-      </Route>
-      <Route path="/">
-        <div>
-          <h1>Welcome to Meteor!</h1>
-          <Hello />
-          <Info />
-        </div>
-      </Route>
-    </Switch>
-  </>
-);
+export const App = () => {
+  const user = useTracker(() => Meteor.user());
+  return (
+    <>
+      <Navbar />
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/">
+          <Welcome />
+        </Route>
+      </Switch>
+    </>
+  );
+};
